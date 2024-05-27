@@ -1,17 +1,22 @@
 const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
+
 const socialsSchema = new mongoose.Schema({
-    logo: {
+    name: {
         type: String,
         required: true
     },
-    name: {
+    url: {
+        type: String,
+        required: true
+    },
+    Icon: {
         type: String,
         required: true
     }
 });
 
-const Socials = mongoose.model("socials", socialsSchema);
+const Socials = mongoose.model("Socials", socialsSchema);
 
 module.exports = Socials;
