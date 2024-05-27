@@ -6,6 +6,7 @@ const Experience = require("./utils/models/experiences.model");
 const Projects = require("./utils/models/projects.model");
 const Skills = require("./utils/models/skills.model");
 const Socials = require("./utils/models/socials.model");
+const Testimonial = require("./utils/models/testimonials.model");
 
 const app = express();
 
@@ -15,8 +16,8 @@ app.use(express.json());
 connectDB();
 
 app.get('/', (req, res) => {
-    res.status(200).send(
-        `
+  res.status(200).send(
+    `
         <style>
         body{
             background: #212121;
@@ -356,58 +357,69 @@ app.get('/', (req, res) => {
    <p class='text'>WELCOME TO DIPTAYAN JASH'S PORTFOLIO BACKEND API</p>
 </div>
         `
-    );
+  );
 });
 
 // GET route to fetch all Experiences
 app.get("/experiences", async (req, res) => {
-    try {
-        const Experience_data = await Experience.find();
-        res.status(200).json({ success: true, data: Experience_data });
-    } catch (error) {
-        console.error("Error fetching Experience:", error);
-        res.status(500).json({ success: false, error: "Internal Server Error" });
-    }
+  try {
+    const Experience_data = await Experience.find();
+    res.status(200).json({ success: true, data: Experience_data });
+  } catch (error) {
+    console.error("Error fetching Experience:", error);
+    res.status(500).json({ success: false, error: "Internal Server Error" });
+  }
 });
 
 // GET route to fetch all Projects
 app.get("/projects", async (req, res) => {
-    try {
-        const Projects_data = await Projects.find();
-        res.status(200).json({ success: true, data: Projects_data });
-    } catch (error) {
-        console.error("Error fetching Projects:", error);
-        res.status(500).json({ success: false, error: "Internal Server Error" });
-    }
+  try {
+    const Projects_data = await Projects.find();
+    res.status(200).json({ success: true, data: Projects_data });
+  } catch (error) {
+    console.error("Error fetching Projects:", error);
+    res.status(500).json({ success: false, error: "Internal Server Error" });
+  }
 });
 
 // GET route to fetch all Skills
 app.get("/skills", async (req, res) => {
-    try {
-        const Skills_data = await Skills.find();
-        res.status(200).json({ success: true, data: Skills_data });
-    } catch (error) {
-        console.error("Error fetching Skills:", error);
-        res.status(500).json({ success: false, error: "Internal Server Error" });
-    }
+  try {
+    const Skills_data = await Skills.find();
+    res.status(200).json({ success: true, data: Skills_data });
+  } catch (error) {
+    console.error("Error fetching Skills:", error);
+    res.status(500).json({ success: false, error: "Internal Server Error" });
+  }
 });
 
 // GET route to fetch all Socials
 app.get("/socials", async (req, res) => {
-    try {
-        const Socials_data = await Socials.find();
-        res.status(200).json({ success: true, data: Socials_data });
-    } catch (error) {
-        console.error("Error fetching Social handles:", error);
-        res.status(500).json({ success: false, error: "Internal Server Error" });
-    }
+  try {
+    const Socials_data = await Socials.find();
+    res.status(200).json({ success: true, data: Socials_data });
+  } catch (error) {
+    console.error("Error fetching Social handles:", error);
+    res.status(500).json({ success: false, error: "Internal Server Error" });
+  }
+});
+
+// GET route to fetch all Testimonials
+app.get("/testimonials", async (req, res) => {
+  try {
+    const Testimonial_data = await Testimonial.find();
+    res.status(200).json({ success: true, data: Testimonial_data });
+  } catch (error) {
+    console.error("Error fetching Testimonials:", error);
+    res.status(500).json({ success: false, error: "Internal Server Error" });
+  }
 });
 
 
 // Middleware to handle unsupported requests
 app.use((req, res, next) => {
-    res.status(404).send(
-        `
+  res.status(404).send(
+    `
       <style>
       body {
         margin: 0;
@@ -532,14 +544,14 @@ app.use((req, res, next) => {
   </div>
   <p class="text">ERROR 404, Method Not Allowed </p>
       `
-    );
-    // res.status(404).sendFile(path.join(__dirname, 'public', 'error.html'));
+  );
+  // res.status(404).sendFile(path.join(__dirname, 'public', 'error.html'));
 });
 
 // Error handling middleware
 app.use((err, req, res, next) => {
-    console.error("Error:", err.message);
-    res.status(500).json({ success: false, error: "Internal Server Error" });
+  console.error("Error:", err.message);
+  res.status(500).json({ success: false, error: "Internal Server Error" });
 });
 
 // Start the server
