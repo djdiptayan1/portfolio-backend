@@ -3,7 +3,11 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const projectSchema = new mongoose.Schema({
-    name: {
+    type: {
+        type: String,
+        required: true
+    },
+    title: {
         type: String,
         required: true
     },
@@ -11,20 +15,41 @@ const projectSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    technologies:
-    {
-        type: [String],
-        required: true
+    github: {
+        type: String
     },
-    image: {
+    website: {
+        type: String
+    },
+    logo: {
+        type: String
+    },
+    coverImage: {
+        type: String
+    },
+    color: {
         type: String,
         required: true
     },
-    project_demo: {
-        type: String
+    feature: {
+        type: Boolean,
+        required: true
     },
-    source_code_link: {
-        type: String
+    slug: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    technologies: {
+        type: [String],
+        required: true
+    },
+    motivation: {
+        type: String,
+        required: true
+    },
+    images: {
+        type: [String]
     }
 });
 
