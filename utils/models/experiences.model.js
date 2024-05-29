@@ -1,9 +1,7 @@
-// product.models.js
 const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-// Define the product schema
 const ExperienceSchema = new mongoose.Schema({
     date: {
         start: {
@@ -38,7 +36,6 @@ const ExperienceSchema = new mongoose.Schema({
     }
 });
 
-// Create the Product model
 const Experience = mongoose.model('experiences', ExperienceSchema);
 
 module.exports = Experience;
