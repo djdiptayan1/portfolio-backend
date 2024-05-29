@@ -7,6 +7,7 @@ const Projects = require("./utils/models/projects.model");
 const Skills = require("./utils/models/skills.model");
 const Socials = require("./utils/models/socials.model");
 const Testimonial = require("./utils/models/testimonials.model");
+import Certificates from './utils/models/certificates.model';
 
 const app = express();
 
@@ -411,6 +412,17 @@ app.get("/testimonials", async (req, res) => {
     res.status(200).json({ success: true, data: Testimonial_data });
   } catch (error) {
     console.error("Error fetching Testimonials:", error);
+    res.status(500).json({ success: false, error: "Internal Server Error" });
+  }
+});
+
+// GET route to fetch all Certifications
+app.get("/certifications", async (req, res) => {
+  try {
+    const Certificate_data = await Certificates.find();
+    res.status(200).json({ success: true, data: Certificate_data });
+  } catch (error) {
+    console.error("Error fetching Experience:", error);
     res.status(500).json({ success: false, error: "Internal Server Error" });
   }
 });
