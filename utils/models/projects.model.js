@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const projectSchema = new mongoose.Schema({
+    priority: {
+        type: Number,
+        required: true
+    },
     type: {
         type: String,
         required: true
