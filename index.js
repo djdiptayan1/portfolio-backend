@@ -7,7 +7,7 @@ const Projects = require("./utils/models/projects.model");
 const Skills = require("./utils/models/skills.model");
 const Socials = require("./utils/models/socials.model");
 const Testimonial = require("./utils/models/testimonials.model");
-import Certificates from './utils/models/certificates.model';
+const Certificates = require("./utils/models/certificates.model");
 
 const app = express();
 
