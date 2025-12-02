@@ -23,7 +23,13 @@ const CertificateSchema = new mongoose.Schema({
         type: String,
         required: true
     }
+}, {
+    timestamps: true
 });
+
+// Indexes for better query performance
+CertificateSchema.index({ date: -1 });
+CertificateSchema.index({ title: 1 });
 
 const Certificates = mongoose.model('certificates', CertificateSchema);
 

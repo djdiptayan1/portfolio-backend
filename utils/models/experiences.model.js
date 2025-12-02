@@ -34,7 +34,13 @@ const ExperienceSchema = new mongoose.Schema({
         type: String,
         required: true
     }
+}, {
+    timestamps: true
 });
+
+// Indexes for better query performance
+ExperienceSchema.index({ 'date.start': -1 });
+ExperienceSchema.index({ company: 1 });
 
 const Experience = mongoose.model('experiences', ExperienceSchema);
 

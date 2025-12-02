@@ -28,7 +28,13 @@ const testimonialSchema = new mongoose.Schema({
             required: true
         }
     }
+}, {
+    timestamps: true
 });
+
+// Indexes for better query performance
+testimonialSchema.index({ name: 1 });
+testimonialSchema.index({ 'company.name': 1 });
 
 const Testimonial = mongoose.model("testimonials", testimonialSchema);
 

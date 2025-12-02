@@ -11,7 +11,12 @@ const skillsSchema = new mongoose.Schema({
         type: String,
         required: true
     }
+}, {
+    timestamps: true
 });
+
+// Indexes for better query performance
+skillsSchema.index({ name: 1 });
 
 const Skills = mongoose.model("skills", skillsSchema);
 

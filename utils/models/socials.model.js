@@ -15,7 +15,12 @@ const socialsSchema = new mongoose.Schema({
         type: String,
         required: true
     }
+}, {
+    timestamps: true
 });
+
+// Indexes for better query performance
+socialsSchema.index({ name: 1 });
 
 const Socials = mongoose.model("Socials", socialsSchema);
 

@@ -55,7 +55,16 @@ const projectSchema = new mongoose.Schema({
     images: {
         type: [String]
     }
+}, {
+    timestamps: true
 });
+
+// Indexes for better query performance
+projectSchema.index({ slug: 1 });
+projectSchema.index({ type: 1 });
+projectSchema.index({ feature: 1 });
+projectSchema.index({ priority: 1 });
+projectSchema.index({ type: 1, feature: 1 });
 
 const Projects = mongoose.model("projects", projectSchema);
 
